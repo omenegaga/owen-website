@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1538"><meta name="description" content="Learn to build professional websites and online stores using AI. Get the AI Website Masterclass for ₦5,000 with immediate access."><title>AI Website Masterclass — Immediate Access for ₦5,000</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><script src="../config.js"></script><script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  const paymentUrl = (window.APP_CONFIG || {}).PAYMENT_URL || '';
+  const allowedTrackingParams = [
+    'fbclid', 'gclid', 'ttclid', 'msclkid',
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'
+  ];
+
+  document.querySelectorAll('[data-buy]').forEach(link => {
+    if (!paymentUrl || paymentUrl.includes('YOUR_')) {
+      link.href = '#checkout-note';
+      return;
+    }
+
+    try {
+      const destination = new URL(paymentUrl, window.location.href);
+      const isSelar = destination.hostname === 'selar.com' || destination.hostname.endsWith('.selar.com');
+
+      // Carry ad-click and campaign parameters from the sales page to Selar.
+      // Do not add _fbp or _fbc here: those are cookies, not URL parameters.
+      if (isSelar) {
+        const sourceParams = new URLSearchParams(window.location.search);
+        allowedTrackingParams.forEach(name => {
+          const value = sourceParams.get(name);
+          if (value && !destination.searchParams.has(name)) {
+            destination.searchParams.set(name, value);
+          }
+        });
+      }
+
+      link.href = destination.toString();
+    } catch (error) {
+      // Keep the configured destination if URL parsing fails.
+      link.href = paymentUrl;
+    }
+  });
+});
+</script></head><body class="sales-body">
+<main>
+<section class="sales-video-hero">
+<div class="sales-timer-row"><span>Watch the free video on how to build websites with AI</span><div class="timer-boxes" aria-label="Offer timer"><div><strong id="timer-hours">00</strong><small>h</small></div><div><strong id="timer-minutes">30</strong><small>m</small></div><div><strong id="timer-seconds">00</strong><small>s</small></div></div></div>
+<div class="sales-video-frame" id="sales-video"><div class="sales-video-placeholder"><div class="sales-play-icon">▶</div><strong>Your masterclass preview will appear here</strong><span>VIDEO PLACEHOLDER · Add your video when ready</span></div></div>
+<a class="sales-video-cta" data-buy href="#checkout-note">Get the AI Website Masterclass <span>→</span></a>
+<p class="sales-video-note">One-time payment of ₦5,000 · Immediate access after payment</p>
+</section>
+
+<section class="light-section opportunity-section"><div class="section-inner">
+<div class="section-kicker">THE OPPORTUNITY</div>
+<h2>You've seen what AI can do.<br><span>But what you've seen is just a glimpse of what's possible.</span></h2>
+<p class="section-copy opportunity-lead">There's a difference between building a basic website with AI and creating a high-end, professional website that makes a strong first impression, builds trust, and positions a business ahead of its competitors.</p>
+<p class="section-copy">A website that makes visitors take your business seriously and feel confident buying your products or services.</p>
+<p class="section-copy"><strong>Whether you want to build a professional website for your own business or learn a skill you can use to build websites for other businesses and get paid.</strong></p>
+<p class="section-copy"><strong>That's exactly what my AI Website Masterclass will teach you:</strong></p>
+<p class="section-copy">How to use AI tools to build professional websites and online stores that look impressive, build trust, and are good enough to attract real paying customers.</p>
+<div class="curriculum-intro"><span class="mini-kicker">THE CURRICULUM</span><h2 class="subsection-heading">Inside the AI Website Masterclass, I'll teach you:</h2><p>Six practical capabilities, from your first prompt to a website people can visit and use.</p></div>
+<div class="curriculum training-grid">
+<article><span class="module-number">01</span><div><h3>How to use prompts to make your websites look more professional and credible</h3><p>Learn how to give AI the right instructions to create polished, high-end websites that build trust and make businesses look more credible.</p></div></article>
+<article><span class="module-number">02</span><div><h3>How to build online stores like Jumia and Konga</h3><p>Create online stores where customers can browse products, select what they want, add items to their cart, and pay online.</p></div></article>
+<article><span class="module-number">03</span><div><h3>How to build different types of professional websites</h3><p>Learn to create online stores, business websites, service websites, portfolios, and other types of websites for different businesses and purposes.</p></div></article>
+<article><span class="module-number">04</span><div><h3>How to customize and refine your websites</h3><p>Learn how to make changes, adjust designs, add features, and get your website looking exactly the way you want.</p></div></article>
+<article><span class="module-number">05</span><div><h3>How to accept payments directly on your website</h3><p>Learn how to integrate payment gateways so customers can pay online and the money goes directly to your personal or business bank account.</p></div></article>
+<article><span class="module-number">06</span><div><h3>How to publish your website online</h3><p>Learn how to host and publish your website so anyone with a phone and an internet connection can access it.</p></div></article>
+</div>
+</div></section>
+<section class="dark-section value-section"><div class="section-inner">
+<div class="section-kicker">WHAT YOU GET</div>
+<h2>Here's everything you get when you join the AI Website Masterclass</h2>
+<p class="section-copy">You're not just getting a few videos showing you how to build websites with AI.</p>
+<p class="section-copy">You're getting the tools, training, prompts, and resources to create professional websites and turn this skill into something you can use for your own business or offer to other businesses as a paid service.</p>
+<p class="section-copy">Here's what you'll get:</p>
+<div class="curriculum included-grid">
+<article><span class="module-number">01</span><div><h3>Full Access to the AI Website Masterclass</h3><p>Get step-by-step training on how to use AI to create high-end, professional-looking websites and online stores without writing a single line of code. Whether it's for your own business or for clients, you'll learn how to create websites that look credible and stand out.</p></div></article>
+<article><span class="module-number">02</span><div><h3>Lifetime Access to All Masterclass Recordings</h3><p>Go through the lessons at your own pace. Rewatch them whenever you need to, revisit specific steps, and keep learning without worrying about losing access.</p></div></article>
+<article><span class="module-number">03</span><div><h3>Access to My Top 3 AI Website-Building Tools</h3><p>Get access to the three AI tools I use to build websites. Different tools work better for different projects. The tool I use for online stores, for example, isn't necessarily the one I'd choose for a portfolio or business website. I'll show you which tools to use and when.</p></div></article>
+<article><span class="module-number">04</span><div><h3>My 20-Page Master Prompt</h3><p>Get access to my detailed website-building prompt. Simply make a few edits to match the business you're building for, submit the prompt, and let AI do the heavy lifting.</p><p>This prompt contains detailed instructions for creating websites with the kind of structure, design, and attention to detail you'd expect from experienced professional web developers.</p></div></article>
+<article><span class="module-number">05</span><div><h3>AI Website Image Generator</h3><p>Learn how to generate your own high-definition images for your websites using AI. No need to depend on expensive stock images or struggle to find visuals that match your design.</p></div></article>
+<article><span class="module-number">06</span><div><h3>Private AI Website Masterclass WhatsApp Community</h3><p>Join a community of other people learning the same skill. Ask questions, share your work, get feedback, and receive help when you get stuck.</p></div></article>
+<article><span class="module-number">07</span><div><h3>The Website Client Hack</h3><p>I'll show you a powerful addition to your website's hero section that can make your offer more compelling, grab visitors' attention, and give potential clients a stronger reason to choose you over your competitors.</p></div></article>
+</div>
+<p class="section-copy"><strong>And the best part? You don't need to know how to code, and you don't need months of technical training before you can start creating.</strong></p>
+</div></section>
+<section class="light-section investment-section"><div class="section-inner">
+<div class="section-kicker">YOUR INVESTMENT</div>
+<h2>How much does it cost to get all of this?</h2>
+<p class="section-copy">You get everything listed above, including the full AI Website Masterclass, lifetime access to the recordings, my website-building tools, master prompts, image generator, and private WhatsApp community.</p>
+<p class="section-copy"><strong>Your one-time investment is just ₦5,000.</strong></p>
+<p class="section-copy">Yes, just ₦5,000 for everything.</p>
+<p class="section-copy">And honestly, this price is already very low considering the value of what you're getting. It's also subject to increase as the masterclass grows and more resources are added.</p>
+<p class="section-copy"><strong>So if you've been thinking about learning this skill, this is a good time to get started before the price goes up.</strong></p>
+<div class="price-line investment-price"><span class="price">₦5,000</span><span class="price-note">ONE-TIME PAYMENT</span></div>
+<a class="cta-button cta-button-wide" data-buy href="#checkout-note">GET INSTANT ACCESS TO THE MASTERCLASS <span>→</span></a>
+<p class="safe-note">One-time payment · Lifetime access to recordings</p>
+</div></section>
+<section class="dark-section guarantee-section"><div class="section-inner">
+<div class="section-kicker">YOUR PURCHASE IS PROTECTED</div>
+<h2>But what if you pay and still can't build a professional website?</h2>
+<p class="section-copy">I don't want you to spend your money and end up disappointed.</p>
+<p class="section-copy">That's why your purchase comes with my <strong>7-Day Professional Website Guarantee.</strong></p>
+<p class="section-copy">Here's how it works:</p>
+<p class="section-copy">Go through the masterclass, follow the lessons, and put what you've learned into practice.</p>
+<p class="section-copy">If, within 7 days of completing the course content, you're still unable to create a professional-looking website or online store, simply send me an email.</p>
+<p class="section-copy"><strong>You'll get a full refund of your ₦5,000. No questions asked.</strong></p>
+<p class="section-copy">You get to learn a valuable skill, put it into practice, and have the confidence that your money is protected.</p>
+<h2><span>You have nothing to lose.</span></h2>
+</div></section>
+<section class="faq-section"><div class="section-inner"><div class="section-kicker">QUESTIONS YOU MAY HAVE</div><h2>Let's clear a few things up.</h2><div class="faq-list"><details><summary>Do I need coding experience?</summary><p>No prior coding experience is required to get started. You'll learn how to use AI tools to help generate and refine websites, while practising the process.</p></details><details><summary>Is this suitable for complete beginners?</summary><p>Yes. The masterclass is designed to introduce the process step by step. Be willing to follow along and practise.</p></details><details><summary>Will I be able to make money after this?</summary><p>The skill can be used to create websites for your own projects or offered as a service. Income isn't guaranteed; it depends on your practice, quality, marketing, and ability to find and serve clients.</p></details><details><summary>What exactly do I receive?</summary><p>You receive the masterclass recordings, the website-building Master Prompt, and practical resources and templates included in the training.</p></details><details><summary>When do I get access?</summary><p>Access is intended to be immediate after successful payment. The payment and delivery system must be connected before launch.</p></details></div></div></section>
+<section class="offer-section" id="checkout-note"><div class="offer-card"><div class="section-kicker">YOUR NEXT STEP</div><h2>Start building with AI<br><span>for just ₦5,000.</span></h2><p class="offer-copy">Get the complete AI Website Masterclass, recordings, Master Prompt, and practical resources in one affordable package.</p><div class="price-line"><span class="price">₦5,000</span><span class="price-note">ONE-TIME PAYMENT</span></div><ul class="offer-list"><li>✓ Complete AI Website Masterclass recordings</li><li>✓ Website-building Master Prompt + customization guidance</li><li>✓ Practical resources and templates</li><li>✓ Training on business websites and online stores</li><li>✓ Lessons on testing, payments, and publishing</li><li>✓ Immediate access after payment is confirmed</li></ul><a class="cta-button cta-button-wide" data-buy href="#checkout-note">YES! GIVE ME INSTANT ACCESS <span>→</span></a><p class="checkout-note">Payment checkout is not connected yet. Add your Paystack/Flutterwave payment link in <code>config.js</code> before publishing.</p><p class="safe-note">Secure payment link · One-time fee · Learn at your own pace</p></div></section>
+</main><footer class="sales-footer">© <span id="year"></span> Owen Omene · AI Website Masterclass<script>document.getElementById('year').textContent=new Date().getFullYear()</script></footer><script>
+// Preview timer: 30 minutes per visit. Adjust SALES_TIMER_MINUTES below if needed.
+(()=>{const SALES_TIMER_MINUTES=30;let remaining=SALES_TIMER_MINUTES*60;
+const h=document.getElementById('timer-hours'),m=document.getElementById('timer-minutes'),sec=document.getElementById('timer-seconds');
+function tick(){const hours=Math.floor(remaining/3600),minutes=Math.floor((remaining%3600)/60),seconds=remaining%60;
+if(h)h.textContent=String(hours).padStart(2,'0');if(m)m.textContent=String(minutes).padStart(2,'0');if(sec)sec.textContent=String(seconds).padStart(2,'0');
+if(remaining>0)remaining--;else remaining=SALES_TIMER_MINUTES*60;}
+tick();setInterval(tick,1000);})();
+</script></body></html>
