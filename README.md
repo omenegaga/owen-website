@@ -15,3 +15,4 @@ Deploy the contents of this folder to the existing Vercel project. Keep the `ass
 The supplied original project still uses Supabase placeholders for lead capture. This restructuring does not connect Brevo yet. The Supabase settings must be replaced with a secure Brevo server-side endpoint before the registration form can save leads. Keep the Brevo API key out of browser-side files.
 
 The payment URL and training video are still configured as placeholders in the original project. Set those before launch.
+Website deployment update
