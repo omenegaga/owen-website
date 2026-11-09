@@ -2,17 +2,21 @@
 
 ## Routes
 - `/` — general homepage, reserved for future use
-- `/register/` — existing free-training lead capture page
-- `/training/` — free video training page
-- `/sales/` — AI Website Masterclass sales page
+- `/register/` — free-training lead capture page
+- `/training/` — separate training page (not used as the post-registration destination)
+- `/sales/` — sales page containing the video; successful registrations redirect here
 
-The registration page redirects successful registrations to `/training/`. The training CTA links to `/sales/`.
+## Brevo lead capture
+The registration form sends the first name and email to `/api/subscribe`. The Vercel serverless function in `api/subscribe.js` sends the contact to Brevo using a server-side API key. The API key must never be placed in `app.js`, `config.js`, or any other public file.
+
+In Vercel → Project → Settings → Environment Variables, add:
+- `BREVO_API_KEY` — your Brevo API key (keep it private).
+- `BREVO_LIST_ID` — optional numeric ID of the Brevo contact list for these leads. If omitted, the contact is created/updated in Brevo without being assigned to a specific list.
+
+Apply the variables to Production (and Preview if you want preview deployments to accept registrations), save, then redeploy.
 
 ## Deployment
-Deploy the contents of this folder to the existing Vercel project. Keep the `assets/` folder and shared `styles.css`, `config.js`, and `app.js` at the project root.
+Deploy the contents of this folder to the existing Vercel project. Keep `api/`, `assets/`, the page folders, and the shared files at the repository root.
 
-## Important existing integrations
-The supplied original project still uses Supabase placeholders for lead capture. This restructuring does not connect Brevo yet. The Supabase settings must be replaced with a secure Brevo server-side endpoint before the registration form can save leads. Keep the Brevo API key out of browser-side files.
-
-The payment URL and training video are still configured as placeholders in the original project. Set those before launch.
-Website deployment update
+## Other launch settings
+The payment URL and training video may still be placeholders in the original project. Set those before launch.

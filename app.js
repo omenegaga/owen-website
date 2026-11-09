@@ -49,8 +49,8 @@
   }
   initializeMetaPixel();
 
-  function buildWatchUrl() {
-    const target = new URL("/training/", window.location.origin);
+  function buildSalesUrl() {
+    const target = new URL("/sales/", window.location.origin);
     for (const key of ATTRIBUTION_KEYS) {
       if (attribution[key]) target.searchParams.set(key, attribution[key]);
     }
@@ -76,34 +76,21 @@
       emailInput.focus();
       return;
     }
-    if (!window.supabase || !config.SUPABASE_URL || !config.SUPABASE_ANON_KEY ||
-        config.SUPABASE_URL.includes("YOUR_") || config.SUPABASE_ANON_KEY.includes("YOUR_")) {
-      setMessage("Registration is not connected yet. Please try again later.", "error");
-      return;
-    }
-
     setLoading(true);
     try {
-      const client = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY);
-      const lead = {
-        first_name,
-        email,
-        landing_page_url: window.location.href,
-        referrer: document.referrer || null,
-        utm_source: attribution.utm_source || null,
-        utm_medium: attribution.utm_medium || null,
-        utm_campaign: attribution.utm_campaign || null,
-        utm_term: attribution.utm_term || null,
-        utm_content: attribution.utm_content || null,
-        fbclid: attribution.fbclid || null
-      };
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ first_name, email })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Registration could not be completed.");
+      }
 
-      const { error } = await client.from("leads").insert([lead]);
-      if (error) throw error;
-
-      // Fire the Lead event only after Supabase confirms the insert.
+      // Fire the Lead event only after Brevo confirms the contact was saved.
       if (typeof window.fbq === "function") window.fbq("track", "Lead");
-      window.location.assign(buildWatchUrl());
+      window.location.assign(buildSalesUrl());
     } catch (error) {
       console.error("Lead submission failed:", error);
       setMessage("We couldn't submit your details. Please check your connection and try again.", "error");
