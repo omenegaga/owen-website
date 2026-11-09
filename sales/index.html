@@ -1,4 +1,70 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1538"><meta name="description" content="Learn to build professional websites and online stores using AI. Get the AI Website Masterclass for ₦5,000 with immediate access."><title>AI Website Masterclass — Immediate Access for ₦5,000</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><script src="../config.js"></script><script defer>document.addEventListener('DOMContentLoaded',()=>{const u=(window.APP_CONFIG||{}).PAYMENT_URL||'';document.querySelectorAll('[data-buy]').forEach(a=>{if(u && !u.includes('YOUR_'))a.href=u;else a.href='#checkout-note';});});</script></head><body class="sales-body">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1538"><meta name="description" content="Learn to build professional websites and online stores using AI. Get the AI Website Masterclass for ₦5,000 with immediate access."><title>AI Website Masterclass — Immediate Access for ₦5,000</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><script src="../config.js"></script><script>
+/* Meta Pixel: use the ID configured in the root config.js */
+(() => {
+  const pixelId = String((window.APP_CONFIG || {}).META_PIXEL_ID || "").trim();
+  if (!pixelId || pixelId === "YOUR_META_PIXEL_ID" || window.__owenMetaPixelInitialized) return;
+
+  if (!window.fbq) {
+    !function(f,b,e,v,n,t,s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = true;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  }
+
+  window.fbq("init", pixelId);
+  window.fbq("track", "PageView");
+  window.__owenMetaPixelInitialized = true;
+})();
+</script><script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  const paymentUrl = (window.APP_CONFIG || {}).PAYMENT_URL || '';
+  const allowedTrackingParams = [
+    'fbclid', 'gclid', 'ttclid', 'msclkid',
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'
+  ];
+
+  document.querySelectorAll('[data-buy]').forEach(link => {
+    if (!paymentUrl || paymentUrl.includes('YOUR_')) {
+      link.href = '#checkout-note';
+      return;
+    }
+
+    try {
+      const destination = new URL(paymentUrl, window.location.href);
+      const isSelar = destination.hostname === 'selar.com' || destination.hostname.endsWith('.selar.com');
+
+      // Carry ad-click and campaign parameters from the sales page to Selar.
+      // Do not add _fbp or _fbc here: those are cookies, not URL parameters.
+      if (isSelar) {
+        const sourceParams = new URLSearchParams(window.location.search);
+        allowedTrackingParams.forEach(name => {
+          const value = sourceParams.get(name);
+          if (value && !destination.searchParams.has(name)) {
+            destination.searchParams.set(name, value);
+          }
+        });
+      }
+
+      link.href = destination.toString();
+    } catch (error) {
+      // Keep the configured destination if URL parsing fails.
+      link.href = paymentUrl;
+    }
+  });
+});
+</script></head><body class="sales-body">
 <main>
 <section class="sales-video-hero">
 <div class="sales-timer-row"><span>Watch the free video on how to build websites with AI</span><div class="timer-boxes" aria-label="Offer timer"><div><strong id="timer-hours">00</strong><small>h</small></div><div><strong id="timer-minutes">30</strong><small>m</small></div><div><strong id="timer-seconds">00</strong><small>s</small></div></div></div>
@@ -67,7 +133,7 @@
 <h2><span>You have nothing to lose.</span></h2>
 </div></section>
 <section class="faq-section"><div class="section-inner"><div class="section-kicker">QUESTIONS YOU MAY HAVE</div><h2>Let's clear a few things up.</h2><div class="faq-list"><details><summary>Do I need coding experience?</summary><p>No prior coding experience is required to get started. You'll learn how to use AI tools to help generate and refine websites, while practising the process.</p></details><details><summary>Is this suitable for complete beginners?</summary><p>Yes. The masterclass is designed to introduce the process step by step. Be willing to follow along and practise.</p></details><details><summary>Will I be able to make money after this?</summary><p>The skill can be used to create websites for your own projects or offered as a service. Income isn't guaranteed; it depends on your practice, quality, marketing, and ability to find and serve clients.</p></details><details><summary>What exactly do I receive?</summary><p>You receive the masterclass recordings, the website-building Master Prompt, and practical resources and templates included in the training.</p></details><details><summary>When do I get access?</summary><p>Access is intended to be immediate after successful payment. The payment and delivery system must be connected before launch.</p></details></div></div></section>
-<section class="offer-section" id="checkout-note"><div class="offer-card"><div class="section-kicker">YOUR NEXT STEP</div><h2>Start building with AI<br><span>for just ₦5,000.</span></h2><p class="offer-copy">Get the complete AI Website Masterclass, recordings, Master Prompt, and practical resources in one affordable package.</p><div class="price-line"><span class="price">₦5,000</span><span class="price-note">ONE-TIME PAYMENT</span></div><ul class="offer-list"><li>✓ Complete AI Website Masterclass recordings</li><li>✓ Website-building Master Prompt + customization guidance</li><li>✓ Practical resources and templates</li><li>✓ Training on business websites and online stores</li><li>✓ Lessons on testing, payments, and publishing</li><li>✓ Immediate access after payment is confirmed</li></ul><a class="cta-button cta-button-wide" data-buy href="#checkout-note">YES! GIVE ME INSTANT ACCESS <span>→</span></a><p class="checkout-note">Payment checkout is not connected yet. Add your Paystack/Flutterwave payment link in <code>config.js</code> before publishing.</p><p class="safe-note">Secure payment link · One-time fee · Learn at your own pace</p></div></section>
+<section class="offer-section" id="checkout-note"><div class="offer-card"><div class="section-kicker">YOUR NEXT STEP</div><h2>Start building with AI<br><span>for just ₦5,000.</span></h2><p class="offer-copy">Get the complete AI Website Masterclass, recordings, Master Prompt, and practical resources in one affordable package.</p><div class="price-line"><span class="price">₦5,000</span><span class="price-note">ONE-TIME PAYMENT</span></div><ul class="offer-list"><li>✓ Complete AI Website Masterclass recordings</li><li>✓ Website-building Master Prompt + customization guidance</li><li>✓ Practical resources and templates</li><li>✓ Training on business websites and online stores</li><li>✓ Lessons on testing, payments, and publishing</li><li>✓ Immediate access after payment is confirmed</li></ul><a class="cta-button cta-button-wide" data-buy href="#checkout-note">YES! GIVE ME INSTANT ACCESS <span>→</span></a><p class="safe-note">Secure payment link · One-time fee · Learn at your own pace</p></div></section>
 </main><footer class="sales-footer">© <span id="year"></span> Owen Omene · AI Website Masterclass<script>document.getElementById('year').textContent=new Date().getFullYear()</script></footer><script>
 // Preview timer: 30 minutes per visit. Adjust SALES_TIMER_MINUTES below if needed.
 (()=>{const SALES_TIMER_MINUTES=30;let remaining=SALES_TIMER_MINUTES*60;
