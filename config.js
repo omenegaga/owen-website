@@ -4,5 +4,5 @@
 */
 window.APP_CONFIG = {
   META_PIXEL_ID: "2270135260417172", // Optional. Add your real Meta Pixel ID; do not use a placeholder ID.
-  PAYMENT_URL: "YOUR_PAYSTACK_OR_FLUTTERWAVE_PAYMENT_LINK" // Paste your checkout/payment link here before launch.
+  PAYMENT_URL: "https://selar.com/65gqit6212" // Paste your checkout/payment link here before launch.
 };
