@@ -64,11 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-</script></head><body class="sales-body">
+</script>
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/ka6ovhmwhb.js" async type="module"></script>
+<style>
+  wistia-player[media-id='ka6ovhmwhb']:not(:defined) {
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ka6ovhmwhb/swatch');
+    display: block;
+    filter: blur(5px);
+    padding-top: 112.78%;
+  }
+</style>
+</head><body class="sales-body">
 <main>
 <section class="sales-video-hero">
 <div class="sales-timer-row"><span>Watch the free video on how to build websites with AI</span><div class="timer-boxes" aria-label="Offer timer"><div><strong id="timer-hours">00</strong><small>h</small></div><div><strong id="timer-minutes">30</strong><small>m</small></div><div><strong id="timer-seconds">00</strong><small>s</small></div></div></div>
-<div class="sales-video-frame" id="sales-video"><div class="sales-video-placeholder"><div class="sales-play-icon">▶</div><strong>Your masterclass preview will appear here</strong><span>VIDEO PLACEHOLDER · Add your video when ready</span></div></div>
+<div class="sales-video-frame" id="sales-video"><wistia-player media-id="ka6ovhmwhb" aspect="0.8866995073891626"></wistia-player></div>
 <a class="sales-video-cta" data-buy href="#checkout-note">Get the AI Website Masterclass <span>→</span></a>
 <p class="sales-video-note">One-time payment of ₦5,000 · Immediate access after payment</p>
 </section>
