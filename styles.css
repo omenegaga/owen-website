@@ -301,3 +301,37 @@ button:disabled { cursor: wait; opacity: .72; transform: none; }
 .investment-section .investment-price{width:100%;justify-content:center}.investment-price .price{font-size:51px}
 .offer-section{padding:58px 15px}
 }
+
+
+/* Wistia sales video: use the exact native ratio from the embed (width / height).
+   Keep the wrapper, placeholder and player on one shared set of dimensions. */
+.sales-video-frame {
+  display: block;
+  position: relative;
+  width: min(100%, 430px);
+  max-width: 430px;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  aspect-ratio: 0.8866995073891626;
+  overflow: hidden;
+}
+.sales-video-frame > wistia-player,
+.sales-video-frame > .sales-video-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+}
+.sales-video-frame > wistia-player {
+  aspect-ratio: 0.8866995073891626;
+}
+@media (max-width: 600px) {
+  .sales-video-frame {
+    width: min(100%, 390px);
+    max-width: 390px;
+  }
+}
