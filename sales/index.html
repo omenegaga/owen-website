@@ -68,31 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="https://fast.wistia.com/player.js" async></script>
 <script src="https://fast.wistia.com/embed/ka6ovhmwhb.js" async type="module"></script>
 <style>
-  /* Match the wrapper to the exact aspect ratio supplied by this Wistia video. */
-  .sales-video-frame {
-    display: block !important;
-    position: relative;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    aspect-ratio: 0.8866995073891626 !important;
-    overflow: hidden;
-  }
-  .sales-video-frame wistia-player {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    aspect-ratio: 0.8866995073891626 !important;
-  }
   wistia-player[media-id='ka6ovhmwhb']:not(:defined) {
     display: block;
     width: 100%;
-    aspect-ratio: 0.8866995073891626;
-    padding: 0;
+    padding-top: 112.78%;
     background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ka6ovhmwhb/swatch');
     filter: blur(5px);
   }
