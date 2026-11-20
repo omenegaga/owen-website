@@ -74,6 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
     filter: blur(5px);
     padding-top: 112.78%;
   }
+  /* Match the frame to the exact proportions supplied by Wistia. */
+  .sales-video-frame {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    aspect-ratio: 0.8866995073891626;
+    overflow: hidden;
+  }
+  .sales-video-frame wistia-player {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 </head><body class="sales-body">
 <main>
