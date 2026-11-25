@@ -66,23 +66,36 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script src="https://fast.wistia.com/player.js" async></script>
-<script src="https://fast.wistia.com/embed/hnkz63jg59.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/k1x29yxn5w.js" async type="module"></script>
 <style>
-  wistia-player[media-id='hnkz63jg59']:not(:defined) {
+  wistia-player[media-id='k1x29yxn5w']:not(:defined) {
     display: block;
     width: 100%;
     padding-top: 112.78%;
-    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/hnkz63jg59/swatch');
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/k1x29yxn5w/swatch');
     filter: blur(5px);
+  }
+</style>
+<style>
+  .sales-video-cta[hidden], .sales-video-note[hidden] { display: none !important; }
+  .sales-video-cta.is-revealed, .sales-video-note.is-revealed {
+    animation: salesCtaReveal 550ms ease both;
+  }
+  @keyframes salesCtaReveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sales-video-cta.is-revealed, .sales-video-note.is-revealed { animation: none; }
   }
 </style>
 </head><body class="sales-body">
 <main>
 <section class="sales-video-hero">
 <div class="sales-timer-row"><span>Watch the free video on how to build websites with AI</span><div class="timer-boxes" aria-label="Offer timer"><div><strong id="timer-hours">00</strong><small>h</small></div><div><strong id="timer-minutes">30</strong><small>m</small></div><div><strong id="timer-seconds">00</strong><small>s</small></div></div></div>
-<div class="sales-video-frame" id="sales-video"><wistia-player media-id="hnkz63jg59" aspect="0.8866995073891626"></wistia-player></div>
-<a class="sales-video-cta" data-buy href="#checkout-note">Get the AI Website Masterclass <span>→</span></a>
-<p class="sales-video-note">One-time payment of ₦5,000 · Immediate access after payment</p>
+<div class="sales-video-frame" id="sales-video"><wistia-player id="masterclass-video" media-id="k1x29yxn5w" aspect="0.8866995073891626"></wistia-player></div>
+<a class="sales-video-cta" data-buy href="#checkout-note" hidden>Get the AI Website Masterclass <span>→</span></a>
+<p class="sales-video-note" hidden>One-time payment of ₦5,000 · Immediate access after payment</p>
 </section>
 
 <section class="light-section opportunity-section"><div class="section-inner">
@@ -154,4 +167,44 @@ function tick(){const hours=Math.floor(remaining/3600),minutes=Math.floor((remai
 if(h)h.textContent=String(hours).padStart(2,'0');if(m)m.textContent=String(minutes).padStart(2,'0');if(sec)sec.textContent=String(seconds).padStart(2,'0');
 if(remaining>0)remaining--;else remaining=SALES_TIMER_MINUTES*60;}
 tick();setInterval(tick,1000);})();
-</script></body></html>
+</script><script>
+// Reveal the video CTA when the Wistia video reaches 7:00 (420 seconds).
+// This follows the video's playback position, not time spent on the page.
+(() => {
+  const REVEAL_AT_SECONDS = 7 * 60;
+
+  function setupVideoCta() {
+    const player = document.getElementById('masterclass-video');
+    const button = document.querySelector('.sales-video-cta');
+    const note = document.querySelector('.sales-video-note');
+    if (!player || !button || !note) return;
+
+    let revealed = false;
+    function revealIfTimeReached() {
+      if (revealed) return;
+      const currentTime = Number(player.currentTime || 0);
+      if (currentTime >= REVEAL_AT_SECONDS) {
+        revealed = true;
+        [button, note].forEach((element) => {
+          element.hidden = false;
+          element.classList.add('is-revealed');
+        });
+      }
+    }
+
+    // Wistia player events detect normal playback and direct seeking.
+    player.addEventListener('time-update', revealIfTimeReached);
+    player.addEventListener('seeked', revealIfTimeReached);
+    player.addEventListener('api-ready', revealIfTimeReached);
+    player.addEventListener('second-change', revealIfTimeReached);
+    revealIfTimeReached();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupVideoCta, { once: true });
+  } else {
+    setupVideoCta();
+  }
+})();
+</script>
+</body></html>
